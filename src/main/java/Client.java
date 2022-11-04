@@ -22,22 +22,31 @@ class Client
         int x;
         ArrayList<Integer> a_deg = new ArrayList<>();
         ArrayList<Integer> b_deg = new ArrayList<>();
+        System.out.println(0);
         for(int i = 1; i < k+1; i++){;
             a_deg.add(mod(a, i*m, p));
+//            System.out.println(a_deg.get(i-1));
         }
-        for(int i = 0; i < m; i++){;
+        System.out.println(0);
+        for(int i = 1; i < m+1; i++){;
             b_deg.add(b*mod(a, i, p)%p);
+//            System.out.println(b_deg.get(i-1));
         }
         int i = 0;
         int j = 0;
         for(i = 0; i < k; i++){
             for(j = 0; j < m; j++){
                 if(a_deg.get(i) == b_deg.get(j)){
+                    System.out.println(i);
+                    System.out.println(a_deg.get(i));
+                    System.out.println(j);
+                    System.out.println(b_deg.get(j));
                     break;
                 }
             }
             if(j != m && a_deg.get(i) == b_deg.get(j)){
                 i++;
+                j++;
                 break;
             }
         }
@@ -63,7 +72,8 @@ class Client
         b = Integer.parseInt(ch);
         ch = "";
         i+=5;
-        for(;i<equation.length(); i++){
+//        for(;i<equation.length(); i++){
+        for(;equation.charAt(i) != ' '; i++){
             ch += equation.charAt(i);
         }
         p = Integer.parseInt(ch);
@@ -86,6 +96,7 @@ class Client
                     if((x = in.readLine()) != null){
                         System.out.println(x);
                         if(n != 0) {
+//                            Thread.sleep(3000);
                             y = solve(x);
                             out.write(y+ "\n");
                             out.flush();
